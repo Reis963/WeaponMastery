@@ -1,1 +1,11 @@
 /WeaponMastery/.vs
+/.vs
+/WeaponMastery/bin
+/WeaponMastery/obj
+/WeaponMastery/release
+WeaponMastery/References/Tarkov/UnityEngine.dll
+WeaponMastery/References/Tarkov/UnityEngine.CoreModule.dll
+WeaponMastery/References/Tarkov/Assembly-CSharp.dll
+WeaponMastery/References/Tarkov/AnimationSystem.Types.dll
+WeaponMastery/References/SPT/spt-reflection.dll
+WeaponMastery/References/Bepinex/BepInEx.dll
