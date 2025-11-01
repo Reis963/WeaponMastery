@@ -10,6 +10,7 @@ namespace WeaponMastery
         {
             // Plugin startup logic
             new SetWeaponLevelPatch().Enable();
+            new SetAmmoOnMagPatch().Enable();
         }
     }
 }

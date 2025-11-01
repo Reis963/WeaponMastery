@@ -62,6 +62,7 @@
     <!-- SPT -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patches\AmmoOnMag.cs" />
     <Compile Include="Patches\Patch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

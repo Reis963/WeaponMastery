@@ -16,6 +16,7 @@ namespace WeaponMastery.Patches
         {
             var randomWeaponLevel = Random.Range(0, 3);
             WeaponAnimationSpeedControllerClass.SetWeaponLevel(__instance.Animator, randomWeaponLevel);
+            //Logger.LogInfo($"[Patch] Random WeaponLevel = {randomWeaponLevel}");
         }
     }
 }
