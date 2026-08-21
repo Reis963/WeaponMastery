@@ -18,7 +18,7 @@ namespace WeaponMastery.Patches
             {
                 var fullmag = count;
                 float randomAmmoOnMag = Random.Range(1, fullmag / 2);
-                WeaponAnimationSpeedControllerClass.SetAmmoInMag(__instance.Animator, randomAmmoOnMag);
+                AnimationControllerParametersTable.SetAmmoInMag(__instance.Animator, randomAmmoOnMag);
                 //Logger.LogInfo($"[Patch] Random AmmoInMag = {randomAmmoOnMag}");
             }
             //Logger.LogInfo($"[SetAmmoOnMag] count = {count}");
