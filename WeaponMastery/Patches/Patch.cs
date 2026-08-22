@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+using System;
+using System.Reflection;
 using SPT.Reflection.Patching;
 using Random = UnityEngine.Random;
 
@@ -8,15 +9,34 @@ namespace WeaponMastery.Patches
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(FirearmsAnimator).GetMethod("SetWeaponLevel", BindingFlags.Instance | BindingFlags.Public);
+            return typeof(FirearmsAnimator).GetMethod(
+                nameof(FirearmsAnimator.SetWeaponLevel),
+                BindingFlags.Instance | BindingFlags.Public,
+                null,
+                new[] { typeof(float) },
+                null);
         }
 
-        [PatchPostfix]
-        private static void PatchPostfix(FirearmsAnimator __instance, float weaponLevel)
+        [PatchPrefix]
+        private static void PatchPrefix(ref float weaponLevel)
         {
-            var randomWeaponLevel = Random.Range(0, 3);
-            AnimationControllerParametersTable.SetWeaponLevel(__instance.Animator, randomWeaponLevel);
-            //Logger.LogInfo($"[Patch] Random WeaponLevel = {randomWeaponLevel}");
+            if (!Plugin.IsEnabled.Value)
+            {
+                return;
+            }
+
+            int nativeLevel = (int)weaponLevel;
+            if (nativeLevel < 0 || nativeLevel > 2 || weaponLevel != nativeLevel)
+            {
+                return;
+            }
+
+            if (Random.Range(0, 100) >= Plugin.WeaponLevelVariationChance.Value)
+            {
+                return;
+            }
+
+            weaponLevel = Random.Range(0, 3);
         }
     }
 }
